@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Activity Points</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Add Activity Points</h2>
+        <form action="/add_activity_points" method="post">
+            <div class="form-group">
+                <label for="department">Department:</label>
+                <select class="form-control" id="department" name="department" required>
+                    <option value="ISE">ISE</option>
+                    <option value="CSE">CSE</option>
+                    <option value="ECE">ECE</option>
+                    <option value="ASE">ASE</option>
+                    <option value="CV">CV</option>
+                    <option value="ME">ME</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="USN">USN:</label>
+                <input type="text" class="form-control" id="usn" name="usn" required>
+            </div>
+            <div class="form-group">
+                <label for="student_name">Student Name:</label>
+                <input type="text" class="form-control" id="student_name" name="student_name" required>
+            </div>
+            <div class="form-group">
+                <label for="event_name">Event Name:</label>
+                <input type="text" class="form-control" id="event_name" name="event_name" required>
+            </div>
+            <div class="form-group">
+                <label for="event_date">Event Date:</label>
+                <input type="date" class="form-control" id="event_date" name="event_date" required>
+            </div>
+            <div class="form-group">
+                <label for="points_alloted">Points Alloted:</label>
+                <input type="number" class="form-control" id="points_alloted" name="points_alloted" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

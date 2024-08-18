@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Attendance</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .search-form {
+            margin-bottom: 20px;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>View Attendance</h2>
+        <div class="search-form">
+            <form action="/search_attendance" method="get" class="form-inline">
+                <div class="form-group mr-2">
+                    <input type="text" class="form-control" name="query" placeholder="Search...">
+                </div>
+                <button type="submit" class="btn btn-primary">Search</button>
+            </form>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>USN</th>
+                    <th>Student Name</th>
+                    <th>Department</th>
+                    <th>Event Name</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for attendance in attendances %}
+                <tr>
+                    <td>{{ attendance.USN }}</td>
+                    <td>{{ attendance.student_name }}</td>
+                    <td>{{ attendance.department }}</td>
+                    <td>{{ attendance.event_name }}</td>
+                    <td>{{ attendance.start_date }}</td>
+                    <td>{{ attendance.end_date }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Club Members Dashboard - Rotaract Club of RVCE</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .header {
+            background-color: #004080;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .header img {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            width: 100px;
+            height: auto;
+        }
+
+        .sidebar {
+            height: 100vh;
+            width: 300px; /* Increased width */
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #004080;
+            padding-top: 20px;
+            color: white;
+        }
+
+        .sidebar a {
+            padding: 15px 20px;
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            display: block;
+        }
+
+        .sidebar a:hover {
+            background-color: #575757;
+        }
+
+        .dropdown-container {
+            display: none;
+            background-color: #262626;
+            padding-left: 8px;
+        }
+
+        .dropdown-btn {
+            padding: 15px 20px;
+            font-size: 18px;
+            color: white;
+            border: none;
+            background: none;
+            text-align: left;
+            cursor: pointer;
+            outline: none;
+            width: 100%;
+        }
+
+        .dropdown-btn:hover {
+            background-color: #575757;
+        }
+
+        .container {
+            margin-left: 320px; /* Adjusted to match the increased sidebar width */
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .gallery img {
+            max-width: 300px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .text-content {
+            text-align: justify;
+            margin: 20px 0;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var dropdown = document.querySelector(".dropdown-btn");
+            var dropdownContainer = document.querySelector(".dropdown-container");
+
+            dropdown.addEventListener("click", function () {
+                dropdownContainer.style.display = dropdownContainer.style.display === "block" ? "none" : "block";
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div class="header">
+        <h1>ROTARACT CLUB OF RVCE</h1>
+        <img src="{{ url_for('static', filename='images/LOGO.png') }}" alt="RVCE Logo">
+    </div>
+    <div class="sidebar">
+        <div style="padding: 15px 20px;">
+            <strong>{{ session['mail_id'] }}</strong><br>
+            Club Member
+        </div>
+        <a href="/events_permission">Event Permission</a>
+        <a href="/add_attendance">Add Attendance</a>
+        <a href="/view_attendance">View Attendance</a>
+        <a href="/add_activity_points">Add Activity Points</a>
+        <a href="/view_activity_points">View Activity Points</a>
+        <a href="/achievements">Achievements</a>
+        <button class="dropdown-btn">Contact Us
+            <span style="float: right;">&#9660;</span>
+        </button>
+        <div class="dropdown-container">
+            <a href="tel:+919373051310">Phone: +91 9373051310</a>
+            <a href="mailto:netanyasingh.is21@rvce.edu.in">Email: netanyasingh.is21@rvce.edu.in</a>
+        </div>
+    </div>
+    <div class="container">
+        <div class="content">
+            <h2>About Us</h2>
+            <p class="text-content">
+                Rotaract Club of R.V. College of Engineering is an institution-based club in R.I. District -3190, sponsored by Rotary Bangalore South. The club takes pride in having a record of an annual 1000+ registrations every year and thus being the biggest Rotaract club in South East Asia and one of the largest in the world. The club has successfully completed over 1400 projects till date.
+            </p>
+            <div class="gallery">
+                <img src="{{ url_for('static', filename='images/clubmemdash1.jpeg') }}" alt="Rotaract Event 1">
+                <img src="{{ url_for('static', filename='images/clubmemdash2.jpeg') }}" alt="Rotaract Event 2">
+                <img src="{{ url_for('static', filename='images/clubmemdash3.jpeg') }}" alt="Rotaract Event 3">
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+

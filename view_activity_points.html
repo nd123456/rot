@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Activity Points</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h2>View Activity Points</h2>
+        <form action="" method="get">
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="usn">Filter by USN:</label>
+                    <input type="text" class="form-control" id="usn" name="usn">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="department">Filter by Department:</label>
+                    <select class="form-control" id="department" name="department">
+                        <option value="">All Departments</option>
+                        <option value="ISE">ISE</option>
+                        <option value="CSE">CSE</option>
+                        <option value="ECE">ECE</option>
+                        <option value="ASE">ASE</option>
+                        <option value="CV">CV</option>
+                        <option value="ME">ME</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="event">Filter by Event:</label>
+                    <input type="text" class="form-control" id="event" name="event">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Apply Filters</button>
+        </form>
+        
+        <table class="table mt-3">
+            <thead>
+                <tr>
+                    <th>USN</th>
+                    <th>Student Name</th>
+                    <th>Department</th>
+                    <th>Event Name</th>
+                    <th>Event Date</th>
+                    <th>Points Alloted</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for activity_point in activity_points %}
+                <tr>
+                    <td>{{ activity_point.USN }}</td>
+                    <td>{{ activity_point.student_name }}</td>
+                    <td>{{ activity_point.department }}</td>
+                    <td>{{ activity_point.event_name }}</td>
+                    <td>{{ activity_point.event_date }}</td>
+                    <td>{{ activity_point.points_alloted }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
