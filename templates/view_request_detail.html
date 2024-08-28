@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}View Request{% endblock %}
+{% block content %}
+    <div class="container">
+        <h2>Request Details</h2>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{ request.event_name }}</h5>
+                <p class="card-text">{{ request.event_description }}</p>
+                <form action="{{ url_for('view_request_detail', request_id=request.id) }}" method="POST">
+                    <div class="form-group">
+                        <label for="status">Status:</label>
+                        <select name="status" id="status" class="form-control" {% if request.status == 'approved' %}disabled{% endif %}>
+                            <option value="pending" {% if request.status == 'pending' %}selected{% endif %}>Pending</option>
+                            <option value="approved" {% if request.status == 'approved' %}selected{% endif %}>Approved</option>
+                        </select>
+                    </div>
+                    {% if request.status != 'approved' %}
+                    <button type="submit" class="btn btn-primary">Update Status</button>
+                    {% else %}
+                    <p class="text-success">This request has been approved and cannot be modified.</p>
+                    {% endif %}
+                </form>
+                <a href="{{ url_for('requests_dashboard') }}" class="btn btn-secondary mt-3">Back to Dashboard</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

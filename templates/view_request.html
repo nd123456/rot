@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %}Event Requests{% endblock %}
+{% block content %}
+    <div class="container">
+        <h2>Requests Dashboard</h2>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Newest Requests</h5>
+                {% for request in requests %}
+                    <div class="card mb-2">
+                        <div class="card-body">
+                            <h6 class="card-title">{{ request.event_name }}</h6>
+                            <p class="card-text">{{ request.event_description | truncate(100) }}</p>
+                            
+                            <!-- Check if the event is approved -->
+                            {% if request.status == 'approved' %}
+                                <p>Status: <span class="badge badge-success">Approved</span></p>
+                                <!-- Disable further changes -->
+                                <button class="btn btn-secondary" disabled>Change Status (Approved)</button>
+                            {% else %}
+                                <p>Status: 
+                                    <form action="{{ url_for('view_request_detail', request_id=request.id) }}" method="POST" style="display:inline;">
+                                        <select name="status" class="form-control d-inline" style="width: auto;">
+                                            <option value="pending" {% if request.status == 'pending' %}selected{% endif %}>Pending</option>
+                                            <option value="approved" {% if request.status == 'approved' %}selected{% endif %}>Approve</option>
+                                        </select>
+                                        <button type="submit" class="btn btn-primary">Change Status</button>
+                                    </form>
+                                </p>
+                            {% endif %}
+                            
+                            <a href="{{ url_for('view_request_detail', request_id=request.id) }}" class="btn btn-primary">View Details</a>
+                        </div>
+                    </div>
+                {% else %}
+                    <p>No requests available.</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

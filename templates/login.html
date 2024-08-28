@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Club Management System</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: flex-start; /* Align content to the left */
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            background-image: url("static/rotaractrvce.jpg");
+            background-size: cover;
+            background-position: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #1B3C73;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px; /* Reduced padding */
+            border-radius: 15px;
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            width: 300px; /* Reduced width */
+            margin-left: 50px;
+            margin-right: auto;
+            margin-top: -50px;
+        }
+        .container:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.4);
+        }
+        h2 {
+            color: #40679E;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+        .form-group {
+            margin-bottom: 25px;
+            text-align: left;
+        }
+        label {
+            font-weight: bold;
+            color: #1B3C73;
+        }
+        .form-control {
+            border: 2px solid #40679E;
+            border-radius: 10px;
+            padding: 10px;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        .form-control:focus {
+            border-color: #FF407D;
+            box-shadow: 0 0 10px rgba(255, 64, 125, 0.7);
+        }
+        .form-control.select-role {
+            font-size: 0.9rem;
+        }
+        .btn-primary {
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            background-color: #1B3C73;
+            border: none;
+            transition: background-color 0.3s, transform 0.3s;
+            color: white;
+            font-size: 1.2rem;
+            margin-top: 15px;
+        }
+        .btn-primary:hover {
+            background-color: #40679E;
+            transform: translateY(-5px);
+        }
+        .btn-primary:active {
+            transform: translateY(-2px);
+        }
+        .register-link {
+            display: block;
+            margin-top: 20px;
+            color: #FF407D;
+            font-weight: bold;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .register-link:hover {
+            color: #FF0066;
+        }
+        .alert-container {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Login</h2>
+
+        <!-- Display flash messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="alert-container">
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }}" role="alert">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <form method="POST" action="{{ url_for('login') }}">
+            <div class="form-group">
+                <label for="mail_id">Email ID:</label>
+                <input type="email" class="form-control" id="mail_id" name="mail_id" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" class="form-control" id="password" name="password" required>
+            </div>
+            <div class="form-group">
+                <label for="role">Role:</label>
+                <select class="form-control select-role" id="role" name="role" required>
+                    <option value="club_member">Club Member</option>
+                    <option value="teacher">Teacher</option>
+                    <option value="dean">Dean</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+        <a href="/register" class="register-link">Don't have an account? Register here</a>
+    </div>
+</body>
+</html>

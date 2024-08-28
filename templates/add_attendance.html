@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Attendance - Rotaract Club of RVCE</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
+</head>
+
+<body>
+    <div class="add-container">
+        <h2>Add Attendance</h2>
+        <form action="/add_attendance" method="post">
+            <div class="form-group">
+                <label for="usn">USN:</label>
+                <input type="text" class="form-control" id="usn" name="usn" required>
+            </div>
+            <div class="form-group">
+                <label for="student_name">Student Name:</label>
+                <input type="text" class="form-control" id="student_name" name="student_name" required>
+            </div>
+            <div class="form-group">
+                <label for="department">Department:</label>
+                <select class="form-control" id="department" name="department" required>
+                    <option value="ISE">ISE</option>
+                    <option value="CSE">CSE</option>
+                    <option value="CV">CV</option>
+                    <option value="ME">ME</option>
+                    <option value="ASE">ASE</option>
+                    <option value="ECE">ECE</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="event_name">Event Name:</label>
+                <select class="form-control" id="event_name" name="event_name" required onchange="updateEventDates()">
+                    {% for event in events %}
+                    <option value="{{ event.name }}">{{ event.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="start_date">Start Date:</label>
+                <input type="date" class="form-control" id="start_date" name="start_date" required>
+            </div>
+            <div class="form-group">
+                <label for="end_date">End Date:</label>
+                <input type="date" class="form-control" id="end_date" name="end_date" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Submit</button>
+            <a href="/club_dashboard" class="btn btn-back btn-block">Back</a>
+        </form>
+    </div>
+
+    <script>
+        function updateEventDates() {
+            const eventSelect = document.getElementById('event_name');
+            const selectedOption = eventSelect.options[eventSelect.selectedIndex];
+            const startDate = selectedOption.getAttribute('data-start');
+            const endDate = selectedOption.getAttribute('data-end');
+
+            document.getElementById('start_date').value = startDate;
+            document.getElementById('end_date').value = endDate;
+        }
+    </script>
+</body>
+
+</html>

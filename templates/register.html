@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Club Management System</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #FFC0CB, #FF407D);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .container {
+            width: 400px;
+            padding: 30px;
+            border-radius: 15px;
+            background-color: #ffffff;
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .container:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.4);
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #40679E;
+            font-weight: bold;
+        }
+        .logo {
+            display: block;
+            margin: 0 auto 20px auto;
+            width: 100px;
+            height: 100px;
+            background-image: url('static/rotaract.jpeg');
+            background-size: cover;
+            border-radius: 50%;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        .form-group {
+            margin-bottom: 25px;
+        }
+        label {
+            font-weight: bold;
+            color: #1B3C73;
+        }
+        .form-control {
+            border: 2px solid #40679E;
+            border-radius: 10px;
+            padding: 10px;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        .form-control:focus {
+            border-color: #FF407D;
+            box-shadow: 0 0 10px rgba(255, 64, 125, 0.7);
+        }
+        .btn-primary {
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            background-color: #1B3C73;
+            border: none;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .btn-primary:hover {
+            background-color: #40679E;
+            transform: translateY(-5px);
+        }
+        .btn-primary:active {
+            transform: translateY(-2px);
+        }
+        .login-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #FF407D;
+            font-weight: bold;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .login-link:hover {
+            color: #FF0066;
+        }
+        .flash-message {
+            text-align: center;
+            color: red;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+    </style>
+    <script>
+        function validatePassword() {
+            var password = document.getElementById("password").value;
+            var confirmPassword = document.getElementById("confirm_password").value;
+            if (password != confirmPassword) {
+                alert("Passwords do not match.");
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="logo"></div>
+        <h2>Register</h2>
+
+        <!-- Display flash messages here -->
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <div class="flash-message">
+              {% for message in messages %}
+                <p>{{ message }}</p>
+              {% endfor %}
+            </div>
+          {% endif %}
+        {% endwith %}
+
+        <form action="/register" method="POST" onsubmit="return validatePassword()">
+            <div class="form-group">
+                <label for="mail_id">Email</label>
+                <input type="text" class="form-control" id="mail_id" name="mail_id" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" name="password" required>
+            </div>
+            <div class="form-group">
+                <label for="confirm_password">Confirm Password</label>
+                <input type="password" class="form-control" id="confirm_password" required>
+            </div>
+            <div class="form-group">
+                <label for="role">Role</label>
+                <select class="form-control" id="role" name="role" required>
+                    <option value="club_member">Club Member</option>
+                    <option value="teacher">Teacher</option>
+                    <option value="dean">Dean</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Register</button>
+        </form>
+        <a href="/login" class="login-link">Already have an account? Log in here</a>
+    </div>
+</body>
+</html>
