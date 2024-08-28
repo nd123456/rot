@@ -9,6 +9,7 @@ import MySQLdb.cursors
 import sqlite3
 from flask_login import UserMixin
 import re
+from flask_migrate import Migrate
 
 
 # MY db connection
@@ -22,9 +23,11 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 
 # Set up database connection
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:1234@localhost:3306/cmsys'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://clubms_user:lPDASAqzT1vslbkhEPenlRxcL3igT5Bf@dpg-cr7lqn2j1k6c739va6eg-a.oregon-postgres.render.com/clubms'
+#app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
+migrate = Migrate(app, db)
+
 
 # this is for getting unique user access
 login_manager = LoginManager(app)
@@ -35,31 +38,32 @@ def load_user(mail_id):
     return User.query.get(mail_id)
 
 class User(db.Model, UserMixin):
-    __tablename__='users'
+    __tablename__ = 'users'
     mail_id = db.Column(db.String(64), primary_key=True)
     password = db.Column(db.String(128), nullable=False)
-    role = db.Column(db.Enum('club_member', 'teacher', 'dean'), nullable=False)
+    role = db.Column(db.Enum('club_member', 'teacher', 'dean', name='role_enum'), nullable=False)
+
     def get_id(self):
-           return (self.mail_id)
+        return self.mail_id
 
 # Define Event model
 class Event(db.Model):
-    __tablename__='events'
+    __tablename__ = 'events'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(128), nullable=False)
     description = db.Column(db.String(256))
 
 # Define Request model
 class Request(db.Model):
-    __tablename__='requests'
+    __tablename__ = 'requests'
     id = db.Column(db.Integer, primary_key=True)
     event_name = db.Column(db.String(128), nullable=False)
     event_description = db.Column(db.String(256))
-    status = db.Column(db.Enum('pending', 'approved', 'denied'), nullable=False)
+    status = db.Column(db.Enum('pending', 'approved', 'denied', name='status_enum'), nullable=False)
 
 # Define Attendance model
 class Attendance(db.Model):
-    __tablename__='attendance'
+    __tablename__ = 'attendance'
     id = db.Column(db.Integer, primary_key=True)
     USN = db.Column(db.String(20), nullable=False)
     student_name = db.Column(db.String(128), nullable=False)
@@ -70,7 +74,7 @@ class Attendance(db.Model):
 
 # Define ActivityPoints model
 class ActivityPoints(db.Model):
-    __tablename__='activity_points'
+    __tablename__ = 'activity_points'
     id = db.Column(db.Integer, primary_key=True)
     USN = db.Column(db.String(20), nullable=False)
     student_name = db.Column(db.String(128), nullable=False)
