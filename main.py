@@ -291,6 +291,7 @@ def view_activity_points():
     usn = request.args.get('usn', None)
     department = request.args.get('department', None)
     event = request.args.get('event', None)
+    events = Event.query.all()
 
     filters = []
     if usn:
@@ -305,7 +306,7 @@ def view_activity_points():
     else:
         activity_points = ActivityPoints.query.all()
 
-    return render_template('view_activity_points.html', activity_points=activity_points)
+    return render_template('view_activity_points.html', activity_points=activity_points,events=events)
 
 @app.route('/achievements')
 def achievements():
