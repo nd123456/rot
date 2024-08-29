@@ -286,26 +286,36 @@ def add_activity_points():
 
 @app.route('/view_activity_points', methods=['GET'])
 def view_activity_points():
+    # Ensure only authenticated users who are not the dean can access this page
     if 'mail_id' not in session or session.get('role') == 'dean':
         return redirect(url_for('login'))
+
+    # Get filters from the query parameters
     usn = request.args.get('usn', None)
     department = request.args.get('department', None)
     event = request.args.get('event', None)
 
+    # Prepare filters for querying activity points
     filters = []
     if usn:
         filters.append(ActivityPoints.USN == usn)
     if department:
         filters.append(ActivityPoints.department == department)
-    if event:
+    if event and event != 'All':  # Check if the event is not 'All'
         filters.append(ActivityPoints.event_name == event)
 
+    # Query for all events to populate the dropdown
+    events = Event.query.all()
+
+    # Query for activity points based on the provided filters
     if filters:
         activity_points = ActivityPoints.query.filter(*filters).all()
     else:
         activity_points = ActivityPoints.query.all()
 
-    return render_template('view_activity_points.html', activity_points=activity_points)
+    return render_template('view_activity_points.html', 
+                           activity_points=activity_points, 
+                           events=events)
 
 @app.route('/achievements')
 def achievements():
