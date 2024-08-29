@@ -26,6 +26,7 @@
                     <select class="form-control" id="event" name="event">
                         <!-- Options will be populated dynamically -->
                         {% for event in events %}
+                        <option value="">All Events</option>
                         <option value="{{ event.name }}">{{ event.name }}</option>
                         {% endfor %}
                     </select>
