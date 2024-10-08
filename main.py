@@ -131,11 +131,6 @@ class MyAdminIndexView(AdminIndexView):
         logout_user()
         session.clear()
         flash('You have been logged out.', 'success')
-        if not current_user.is_authenticated:
-            print("User has been logged out successfully.")
-        else:
-            print("Logout failed. User is still logged in.")
-  # Flash a logout success message
         return redirect(url_for('login'))  # Redirect to login after logout
 
 # Initialize the Flask-Admin instance
@@ -254,8 +249,7 @@ def login():
             return redirect(url_for('club_dashboard'))  # Redirect to the updated route name
         else:
             flash('Invalid email, password, or role. Please try again.', 'danger')
-        
-
+            return render_template('login.html')
     return render_template('login.html')
 
 @app.route('/teacher_dashboard')

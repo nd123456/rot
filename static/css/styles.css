@@ -216,7 +216,7 @@
         select.form-control,
         input.form-control {
             appearance: none;
-            background: #EDF6F9;
+            background: #ffffff;
             color: black;
             border: 1px solid black;
         }
@@ -322,7 +322,7 @@
 
         .text-content p {
             margin-bottom: 10px;
-            color: #030d4e;
+            color: black;
         }
     
         

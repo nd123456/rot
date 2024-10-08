@@ -23,49 +23,52 @@
     <!-- Sidebar Section -->
     {% if session['role'] == 'club_member' %}
     <div class="sidebar">
-        <a style="color: black;" href="{{ url_for('club_dashboard') }}" class="btn btn-light" style="padding: 15px 20px; display: block; text-align: center; text-decoration: none; color: white;">
+        <a style="color: black;padding: 6px;margin:4px;" href="{{ url_for('club_dashboard') }}" class="btn btn-light" style="padding: 15px 20px; display: block; text-align: center; text-decoration: none; color: white;">
             <strong>{{ session['mail_id'] }}</strong><br>
             Club Member
         </a>
+        <a href="/club_dashboard">Home</a>
         <a href="/events_permission">Event Permission</a>
         <a href="/add_attendance">Add Attendance</a>
         <a href="/view_attendance">View Attendance</a>
         <a href="/add_activity_points">Add Activity Points</a>
         <a href="/view_activity_points">View Activity Points</a>
         <a href="/contactus">Contact Us</a>
-        <a href="/logout" class="btn btn-light mt-3">Logout</a>
+        <a href="/logout" style="margin:4px;" class="btn btn-light mt-3">Logout</a>
     </div>
     
 
     {% elif session['role'] == 'teacher' %}
     <div class="sidebar">
-        <a style="color: black;" href="{{ url_for('club_dashboard') }}" class="btn btn-light" style="padding: 15px 20px; display: block; text-align: center; text-decoration: none; color: white;">
+        <a style="color: black;padding: 6px;margin:4px;" href="{{ url_for('club_dashboard') }}" class="btn btn-light" style="padding: 15px 20px; display: block; text-align: center; text-decoration: none; color: white;">
             <strong>{{ session['mail_id'] }}</strong><br>
             Councelor
         </a>
+        <a href="/club_dashboard">Home</a>
         <a href="/view_attendance">View Attendance</a>
         <a href="/view_activity_points">View Activity Points</a>
         <a href="/teacher_dashboard">Dashboard</a>
         <a href="/contactus">Contact Us</a>
-        <a href="/logout" class="btn btn-light mt-3">Logout</a>
+        <a href="/logout" style="margin:4px;" class="btn btn-light mt-3">Logout</a>
     </div>
  
     {% elif session['role'] == 'dean' %}
     <div class="sidebar">
-        <a style="color: black;" href="{{ url_for('club_dashboard') }}" class="btn btn-light" style="padding: 15px 20px; display: block; text-align: center; text-decoration: none; color: white;">
+        <a style="color: black;padding: 6px;margin:4px;" href="{{ url_for('club_dashboard') }}" class="btn btn-light" style="padding: 15px 20px; display: block; text-align: center; text-decoration: none; color: white;">
             <strong>{{ session['mail_id'] }}</strong><br>
             Dean
         </a>
+        <a href="/club_dashboard">Home</a>
         <a href="/requests">View Requests</a>
         <a href="/teacher_dashboard">Dashboard</a>
         <a href="/contactus">Contact Us</a>
 
-        <a href="/logout" class="btn btn-light mt-3">Logout</a>
+        <a href="/logout" style="margin:4px;" class="btn btn-light mt-3">Logout</a>
     </div>
   
     {% else %}
     <div class="sidebar">
-        <a style="color: black;" href="{{ url_for('register') }}" class="btn btn-light" style="padding: 15px 20px; display: block; text-align: center; text-decoration: none; color: white;">
+        <a style="color: black;padding: 6px;margin:4px;" href="{{ url_for('register') }}" class="btn btn-light" style="padding: 15px 20px; display: block; text-align: center; text-decoration: none; color: white;">
             <strong>RVCE Rotaract</strong><br>
             Join us today!
         </a>
@@ -73,7 +76,7 @@
         <a href="/achievements">Achievements</a>
         <a href="/contactus">Contact Us</a>
         <a href="/login" class="btn btn-light mt-3">Login</a>
-        <a href="/register" class="btn btn-light mt-3">Sign Up!</a>
+        <a href="/register" style="margin:4px;" class="btn btn-light mt-3">Sign Up!</a>
     </div>
     {% endif %}
     
