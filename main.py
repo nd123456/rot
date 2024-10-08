@@ -23,7 +23,7 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 
 # Set up database connection
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://clubms_user:lPDASAqzT1vslbkhEPenlRxcL3igT5Bf@dpg-cr7lqn2j1k6c739va6eg-a.oregon-postgres.render.com/clubms'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://club_ms_user:WSiZdlbB3toVnAFQ9kIp0o9ObTz1wEPc@dpg-cs2fh6jqf0us73a6vovg-a.ohio-postgres.render.com/club_ms'
 #app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
