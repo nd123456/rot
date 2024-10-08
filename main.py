@@ -5,7 +5,9 @@ from flask_login import UserMixin
 from werkzeug.security import generate_password_hash,check_password_hash
 from flask_login import login_user,logout_user,login_manager,LoginManager
 from flask_mysqldb import MySQL
+from flask_admin import Admin
 import MySQLdb.cursors
+from flask_admin.contrib.sqla import ModelView
 import sqlite3
 from flask_login import UserMixin
 import re
@@ -27,6 +29,8 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://club_ms_user:WSiZdlbB3toVn
 #app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
+admin = Admin(app, name='My Admin Panel', template_mode='bootstrap4')
+
 
 
 # this is for getting unique user access
@@ -82,6 +86,12 @@ class ActivityPoints(db.Model):
     event_name = db.Column(db.String(128), nullable=False)
     event_date = db.Column(db.Date, nullable=False)
     points_alloted = db.Column(db.Integer, nullable=False)
+
+admin.add_view(ModelView(User, db.session))
+admin.add_view(ModelView(Request, db.session))
+admin.add_view(ModelView(Event, db.session))
+admin.add_view(ModelView(Attendance, db.session))
+admin.add_view(ModelView(ActivityPoints, db.session))
 
 # Simulated data structure to store events
 events = []
