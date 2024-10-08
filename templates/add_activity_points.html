@@ -11,6 +11,18 @@
 <body>
     <div class="add-container">
         <h2>Add Activity Points</h2>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="alert-container">
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }} alert-dismissible" role="alert">
+                {{ message }}
+                <span type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+            </div>
+        {% endif %}
+        {% endwith %}
         <form action="/add_activity_points" method="post">
             <div class="form-group">
                 <label for="department">Department:</label>
@@ -47,7 +59,7 @@
                 <label for="points_alloted">Points Alloted:</label>
                 <input type="number" class="form-control" id="points_alloted" name="points_alloted" required>
             </div>
-            <button type="submit" class="btn btn-primary btn-block">Submit</button>
+            <button type="submit" class="btn btn-dark btn-block">Submit</button>
             <a href="/club_dashboard" class="btn btn-back btn-block">Back</a>
 
             

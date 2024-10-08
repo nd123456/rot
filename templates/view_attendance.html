@@ -8,7 +8,7 @@
                 <div class="form-group mr-2">
                     <input type="text" class="form-control" name="query" placeholder="Search...">
                 </div>
-                <button type="submit" class="btn btn-primary">Search</button>
+                <button type="submit" class="btn btn-dark">Search</button>
             </form>
         </div>
         <table class="table">
@@ -20,7 +20,9 @@
                     <th>Event Name</th>
                     <th>Start Date</th>
                     <th>End Date</th>
+                    {% if session['role'] == 'club_member' %}
                     <th>Action</th> <!-- New column for actions -->
+                    {% endif %}
                 </tr>
             </thead>
             <tbody>
@@ -32,14 +34,18 @@
                     <td>{{ attendance.event_name }}</td>
                     <td>{{ attendance.start_date }}</td>
                     <td>{{ attendance.end_date }}</td>
+                    {% if session['role'] == 'club_member' %}
                     <td>
                         <form action="{{ url_for('delete_attendance', attendance_id=attendance.id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this attendance?');">
                             <button type="submit" class="btn btn-danger">Delete</button>
                         </form>
                     </td>
+                    {% endif %}
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
+        <a href="{{ url_for('download_attendance_excel', query=request.args.get('query', '')) }}" class="btn btn-success my-3">Download Attendance Excel</a>
+
     </div>
 {% endblock %}

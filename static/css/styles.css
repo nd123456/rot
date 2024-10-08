@@ -1,12 +1,12 @@
         body {
             font-family: Arial, sans-serif;
-            background: linear-gradient(to right, #191714, #2234AE);
-            color: white;
+            background: #fff4f2;
+            color: black;
         }
         .header {
-            background: linear-gradient(to right, #191714, #2234AE);
-            color: white;
-            padding: 20px;
+            background: #fff4f2;
+            color: black;
+            padding: 26px;
             text-align: center;
             position: relative;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -29,7 +29,7 @@
         
         .add-container {
             background: rgba(255, 255, 255, 0.9);
-            color: #2234AE;
+            color: black;
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -48,7 +48,7 @@
         }
 
         .container h2 {
-            color: #004080;
+            color: black;
         }
 
         .sidebar {
@@ -57,21 +57,22 @@
             position: fixed;
             top: 0;
             left: 0;
-            background: linear-gradient(to bottom, #191714, #2234AE);
+            background: #FFBFB4;
             padding-top: 20px;
-            color: white;
+            color: black;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
         .sidebar a {
             padding: 15px 20px;
             text-decoration: none;
             font-size: 18px;
-            color: white;
+            color: black;
             display: block;
         }
 
         .sidebar a:hover {
-            background-color: #575757;
+            background-color: #ffe8e4;
         }
 
         .dropdown-container {
@@ -93,11 +94,11 @@
         }
 
         .dropdown-btn:hover {
-            background-color: #575757;
+            background-color: #e7b6b6;
         }
         
         h2 {
-            color: #2234AE; /* Heading color to match theme */
+            color: black; /* Heading color to match theme */
         }
         
         .search-form {
@@ -106,7 +107,7 @@
         }
         
         .form-control {
-            border-color: #2234AE; /* Match input border color with theme */
+            border-color: black; /* Match input border color with theme */
         }
         
         
@@ -118,17 +119,17 @@
         }
         
         thead th {
-            background-color: #004080;
-            color: white;
+            background-color: #fff4f2;
+            color: black;
             text-align: center;
         }
         
         tbody tr:nth-child(odd) {
-            background-color: #f2f2f2;
+            background-color: #ffffff;
         }
         
         tbody tr:nth-child(even) {
-            background-color: #e6e6e6;
+            background-color: #fffaf9;
         }
         
         th, td {
@@ -182,7 +183,7 @@
 
         .achievement-card .description {
             padding: 15px;
-            color: #2234AE;
+            color: black;
         }
 
         .description p {
@@ -191,7 +192,7 @@
         }
         
         .form-group label {
-            color: #2234AE;
+            color: black;
         }
 
         .btn-primary {
@@ -206,7 +207,7 @@
         }
 
         .btn-back{
-            background-color: #a6c8ea;
+            background-color: #9d9d9d;
             border-color: #f6f7f8;
             
             
@@ -216,8 +217,8 @@
         input.form-control {
             appearance: none;
             background: #EDF6F9;
-            color: #2234AE;
-            border: 1px solid #2234AE;
+            color: black;
+            border: 1px solid black;
         }
         
         .card {
@@ -316,7 +317,7 @@
             margin-bottom: 15px;
             font-size: 24px;
             text-align: center;
-            color: #0c2aed;
+            color: #ffe8e4;
         }
 
         .text-content p {
@@ -329,8 +330,8 @@
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background-color: #28a745;
-            color: white;
+            background-color: #FFBFB4;
+            color: black;
             border: none;
             padding: 10px 20px;
             font-size: 16px;

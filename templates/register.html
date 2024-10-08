@@ -17,7 +17,7 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background: linear-gradient(135deg, #FFC0CB, #FF407D);
+            background: #fff4f2;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         .container {
@@ -79,6 +79,11 @@
         }
         .btn-primary:active {
             transform: translateY(-2px);
+        }
+        #role {
+            padding-bottom: 4px;
+            padding-top: 4px;
+            font-size: 15px;
         }
         .login-link {
             display: block;
@@ -144,7 +149,7 @@
                 <label for="role">Role</label>
                 <select class="form-control" id="role" name="role" required>
                     <option value="club_member">Club Member</option>
-                    <option value="teacher">Teacher</option>
+                    <option value="teacher">Counselor</option>
                     <option value="dean">Dean</option>
                 </select>
             </div>

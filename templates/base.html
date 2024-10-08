@@ -19,11 +19,11 @@
         <h1>ROTARACT CLUB OF RVCE</h1>
         <img src="{{ url_for('static', filename='LOGO.png') }}" alt="RVCE Logo"> <!-- Updated image path -->
     </div>
-
+    
     <!-- Sidebar Section -->
     {% if session['role'] == 'club_member' %}
     <div class="sidebar">
-        <a href="{{ url_for('club_dashboard') }}" class="btn btn-primary" style="padding: 15px 20px; display: block; text-align: center; text-decoration: none; color: white;">
+        <a style="color: black;" href="{{ url_for('club_dashboard') }}" class="btn btn-light" style="padding: 15px 20px; display: block; text-align: center; text-decoration: none; color: white;">
             <strong>{{ session['mail_id'] }}</strong><br>
             Club Member
         </a>
@@ -32,56 +32,52 @@
         <a href="/view_attendance">View Attendance</a>
         <a href="/add_activity_points">Add Activity Points</a>
         <a href="/view_activity_points">View Activity Points</a>
-        <a href="/achievements">Achievements</a>
-        <button class="dropdown-btn">Contact Us
-            <span style="float: right;">&#9660;</span>
-        </button>
-        <div class="dropdown-container">
-            <a href="tel:+919373051310">Phone: +91 9373051310</a>
-            <a href="mailto:netanyasingh.is21@rvce.edu.in">Email: netanyasingh.is21@rvce.edu.in</a>
-        </div>
-        <a href="/" class="btn btn-danger mt-3">Logout</a>
+        <a href="/contactus">Contact Us</a>
+        <a href="/logout" class="btn btn-light mt-3">Logout</a>
     </div>
-    {% endif %}
+    
 
-    {% if session['role'] == 'teacher' %}
+    {% elif session['role'] == 'teacher' %}
     <div class="sidebar">
-        <a href="{{ url_for('club_dashboard') }}" class="btn btn-primary" style="padding: 15px 20px; display: block; text-align: center; text-decoration: none; color: white;">
+        <a style="color: black;" href="{{ url_for('club_dashboard') }}" class="btn btn-light" style="padding: 15px 20px; display: block; text-align: center; text-decoration: none; color: white;">
             <strong>{{ session['mail_id'] }}</strong><br>
             Councelor
         </a>
         <a href="/view_attendance">View Attendance</a>
         <a href="/view_activity_points">View Activity Points</a>
-        <a href="/achievements">Achievements</a>
         <a href="/teacher_dashboard">Dashboard</a>
-        <button class="dropdown-btn">Contact Us
-            <span style="float: right;">&#9660;</span>
-        </button>
-        <div class="dropdown-container">
-            <a href="tel:+919373051310">Phone: +91 9373051310</a>
-            <a href="mailto:netanyasingh.is21@rvce.edu.in">Email: netanyasingh.is21@rvce.edu.in</a>
-        </div>
-        <a href="/" class="btn btn-danger mt-3">Logout</a>
+        <a href="/contactus">Contact Us</a>
+        <a href="/logout" class="btn btn-light mt-3">Logout</a>
     </div>
-    {% endif %}
-    {% if session['role'] == 'dean' %}
+ 
+    {% elif session['role'] == 'dean' %}
     <div class="sidebar">
-        <a href="{{ url_for('club_dashboard') }}" class="btn btn-primary" style="padding: 15px 20px; display: block; text-align: center; text-decoration: none; color: white;">
+        <a style="color: black;" href="{{ url_for('club_dashboard') }}" class="btn btn-light" style="padding: 15px 20px; display: block; text-align: center; text-decoration: none; color: white;">
             <strong>{{ session['mail_id'] }}</strong><br>
             Dean
         </a>
         <a href="/requests">View Requests</a>
         <a href="/teacher_dashboard">Dashboard</a>
-        <button class="dropdown-btn">Contact Us
-            <span style="float: right;">&#9660;</span>
-        </button>
-        <div class="dropdown-container">
-            <a href="tel:+919373051310">Phone: +91 9373051310</a>
-            <a href="mailto:netanyasingh.is21@rvce.edu.in">Email: netanyasingh.is21@rvce.edu.in</a>
-        </div>
-        <a href="/" class="btn btn-danger mt-3">Logout</a>
+        <a href="/contactus">Contact Us</a>
+
+        <a href="/logout" class="btn btn-light mt-3">Logout</a>
+    </div>
+  
+    {% else %}
+    <div class="sidebar">
+        <a style="color: black;" href="{{ url_for('register') }}" class="btn btn-light" style="padding: 15px 20px; display: block; text-align: center; text-decoration: none; color: white;">
+            <strong>RVCE Rotaract</strong><br>
+            Join us today!
+        </a>
+        <a href="/club_dashboard">Home</a>
+        <a href="/achievements">Achievements</a>
+        <a href="/contactus">Contact Us</a>
+        <a href="/login" class="btn btn-light mt-3">Login</a>
+        <a href="/register" class="btn btn-light mt-3">Sign Up!</a>
     </div>
     {% endif %}
+    
+
 
     <!-- Main Content Area -->
     <div class="content">

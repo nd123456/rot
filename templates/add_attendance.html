@@ -13,6 +13,18 @@
 <body>
     <div class="add-container">
         <h2>Add Attendance</h2>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="alert-container">
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }} alert-dismissible" role="alert">
+                {{ message }}
+                <span type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+            </div>
+        {% endif %}
+        {% endwith %}
         <form action="/add_attendance" method="post">
             <div class="form-group">
                 <label for="usn">USN:</label>
@@ -49,7 +61,7 @@
                 <label for="end_date">End Date:</label>
                 <input type="date" class="form-control" id="end_date" name="end_date" required>
             </div>
-            <button type="submit" class="btn btn-primary btn-block">Submit</button>
+            <button type="submit" class="btn btn-dark btn-block">Submit</button>
             <a href="/club_dashboard" class="btn btn-back btn-block">Back</a>
         </form>
     </div>
