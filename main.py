@@ -4,8 +4,9 @@ from flask_login import LoginManager
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash,check_password_hash
 from flask_login import login_user,logout_user,login_manager,LoginManager
-from flask_mysqldb import MySQL
 import MySQLdb.cursors
+
+from flask_mysqldb import MySQL
 from flask_admin import AdminIndexView, expose,Admin
 from flask_admin.contrib import sqla as flask_admin_sqla
 from flask_admin.contrib.sqla import ModelView
